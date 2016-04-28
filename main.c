@@ -57,8 +57,8 @@ int generalprobe(Tree* tree, size_t *fanout, int32_t probe)
                 else if (fanout[currentLevel]==9) {
                         __m128i lvl_A = _mm_load_si128(( __m128i*)&treeLevels[currentLevel][ prev_result << 3]);
                         __m128i lvl_B = _mm_load_si128(( __m128i*)&treeLevels[currentLevel][(prev_result << 3) + 4]);
-                        __m128i cmp_A = _mm_cmpgt_epi32(lvl_A, key);
-                        __m128i cmp_B = _mm_cmpgt_epi32(lvl_B, key);
+                        __m128i cmp_A = _mm_cmpgt_epi32(key,lvl_A);
+                        __m128i cmp_B = _mm_cmpgt_epi32(key,lvl_B);
                         __m128i cmp = _mm_packs_epi32(cmp_A, cmp_B);
                         cmp = _mm_packs_epi16(cmp, _mm_setzero_si128());
                         int mask = _mm_movemask_epi8(cmp);
@@ -118,6 +118,7 @@ int main(int argc, char* argv[]) {
         // perform index probing (Phase 2)
         for (size_t i = 0; i < num_probes; ++i) {
                 result[i] = generalprobe(tree, fanout, probe[i]);
+                break;
                 
         }
 
