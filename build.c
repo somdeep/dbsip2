@@ -3,7 +3,13 @@
 #include <unistd.h>
 #include <stdint.h>
 #include "random.c"
-
+#include <xmmintrin.h>
+#include <emmintrin.h> 
+#include <pmmintrin.h> 
+#include <tmmintrin.h> 
+#include <smmintrin.h> 
+#include <nmmintrin.h> 
+#include <ammintrin.h> 
 
 
 int binary(int32_t * arr,int start,int end,int32_t target);
