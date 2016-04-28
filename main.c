@@ -99,7 +99,10 @@ int generalprobe(Tree* tree, size_t *fanout, int32_t probe)
 
 
 //HARD-CODED PROBE IMPLEMENTATION
-
+int hardprobe()
+{
+        
+}
 
 int main(int argc, char* argv[]) {
         // parsing arguments
